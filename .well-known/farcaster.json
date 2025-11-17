@@ -1,0 +1,10 @@
+{
+  "miniapp": {
+    "version": "1",
+    "name": "DexScreener BigWin",
+    "iconUrl": "https://bigwin5758.github.io/dexscreener-bigwin/icon.png",
+    "homeUrl": "https://bigwin5758.github.io/dexscreener-bigwin/",
+    "splashImageUrl": "https://bigwin5758.github.io/dexscreener-bigwin/splash.png",
+    "splashBackgroundColor": "#000000"
+  }
+}
