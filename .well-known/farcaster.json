@@ -1,10 +1,7 @@
 {
-  "miniapp": {
-    "version": "1",
-    "name": "DexScreener BigWin",
-    "iconUrl": "https://dexscreener-bigwin.netlify.app/.well-known/icon.png",
-    "homeUrl": "https://dexscreener-bigwin.netlify.app/",
-    "splashImageUrl": "https://dexscreener-bigwin.netlify.app/.well-known/splash.png",
-    "splashBackgroundColor": "#000000"
+  "accountAssociation": {
+    "header": "eyJmaWQiOjI3NDE1OCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDIwMEJiMDM1Mjc3RDM5N2JhN0JEYzVjNzgxNjEyOEQwNjEwZDEwQWQifQ",
+    "payload": "eyJkb21haW4iOiJkZXhzY3JlZW5lci1iaWd3aW4ubmV0bGlmeS5hcHAifQ",
+    "signature": "Y6JCr1QXUndnVgpLdQlD0yPfxc/Wxj6DcZzkqM+z1CNZ5yrz28O4frzDYe7wBo6okFZPIv9qRs4tqgKuCbqHDRw="
   }
 }
