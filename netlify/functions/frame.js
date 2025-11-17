@@ -1,28 +1,20 @@
 exports.handler = async (event, context) => {
-  const price = (Math.random() * 100).toFixed(2);
+  let page = 1;
 
-  return {
-    statusCode: 200,
-    headers: {
-      "Content-Type": "text/html"
-    },
-    body: `
-      <html>
-        <head>
-          <!-- FRAME META TAGS -->
-          <meta property="og:title" content="Live Token Price" />
-          <meta property="fc:frame" content="vNext" />
-          <meta property="fc:frame:image" content="https://dummyimage.com/600x400/000/fff&text=Price:+$${price}" />
-          <meta property="fc:frame:button:1" content="Refresh" />
-          <meta property="fc:frame:button:1:action" content="post" />
-        </head>
+  // Jika POST → baca state
+  if (event.httpMethod === "POST") {
+    try {
+      const body = JSON.parse(event.body);
+      page = body.page || 1;
 
-        <body style="background:#000; color:#fff; padding:20px; font-family:sans-serif;">
-          <h2>Live Token Price Frame</h2>
-          <p>Current Price: <strong>$${price}</strong></p>
-          <p>This URL is primarily meant for Farcaster Frames, but this text is visible in the browser.</p>
-        </body>
-      </html>
-    `
-  };
-};
+      if (body.button === "prev") page = Math.max(1, page - 1);
+      if (body.button === "next") page = page + 1;
+
+    } catch (e) {
+      console.log("Error POST:", e);
+    }
+  }
+
+  // --- Fetch daftar token BASE ---
+  const res = await fetch("https://api.dexscreener.com/latest/dex/search?q=base");
+  const data = await res.json();
