@@ -1,20 +1,28 @@
 exports.handler = async (event, context) => {
-  let page = 1;
+  const list = [
+    { symbol: "TOKEN1", price: (Math.random() * 100).toFixed(2) },
+    { symbol: "TOKEN2", price: (Math.random() * 100).toFixed(2) },
+    { symbol: "TOKEN3", price: (Math.random() * 100).toFixed(2) }
+  ];
 
-  // Jika POST → baca state
-  if (event.httpMethod === "POST") {
+  // ambil index dari button
+  let index = 0;
+  if (event.body) {
     try {
       const body = JSON.parse(event.body);
-      page = body.page || 1;
-
-      if (body.button === "prev") page = Math.max(1, page - 1);
-      if (body.button === "next") page = page + 1;
-
-    } catch (e) {
-      console.log("Error POST:", e);
-    }
+      if (body.untrustedData && body.untrustedData.buttonIndex) {
+        index = parseInt(body.untrustedData.buttonIndex) - 1;
+      }
+    } catch (err) {}
   }
 
-  // --- Fetch daftar token BASE ---
-  const res = await fetch("https://api.dexscreener.com/latest/dex/search?q=base");
-  const data = await res.json();
+  if (index < 0) index = list.length - 1;
+  if (index >= list.length) index = 0;
+
+  const coin = list[index];
+
+  return {
+    statusCode: 200,
+    headers: {
+      "Content-Type": "text/html"
+    },
