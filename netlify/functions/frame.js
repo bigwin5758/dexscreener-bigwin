@@ -5,17 +5,27 @@ exports.handler = async (event, context) => {
     { symbol: "TOKEN3", price: (Math.random() * 100).toFixed(2) }
   ];
 
-  // ambil index dari button
+  // Default index 0
   let index = 0;
+
+  // Ambil buttonIndex dari Warpcast POST payload
   if (event.body) {
     try {
       const body = JSON.parse(event.body);
-      if (body.untrustedData && body.untrustedData.buttonIndex) {
-        index = parseInt(body.untrustedData.buttonIndex) - 1;
+
+      if (body.untrustedData?.buttonIndex) {
+        const btn = parseInt(body.untrustedData.buttonIndex);
+
+        if (btn === 1) index--;      // Prev
+        if (btn === 2) index++;      // Next
       }
-    } catch (err) {}
+
+    } catch (err) {
+      console.log("JSON parse error:", err);
+    }
   }
 
+  // Looping index
   if (index < 0) index = list.length - 1;
   if (index >= list.length) index = 0;
 
@@ -26,3 +36,9 @@ exports.handler = async (event, context) => {
     headers: {
       "Content-Type": "text/html"
     },
+    body: `
+      <html>
+        <head>
+          <meta property="og:title" content="Token Viewer" />
+          <meta property="fc:frame" content="vNext" />
+          <meta property="fc:frame:image" content="https://dummyimage.com/600x
