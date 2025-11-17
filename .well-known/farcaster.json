@@ -1,0 +1,18 @@
+{
+  "accountAssociation": {
+    "header": "eyJmaWQiOjI3NDE1OCwidHlwZSI6ImN1c3RvZHkiLCJrZXkiOiIweDIwMEJiMDM1Mjc3RDM5N2JhN0JEYzVjNzgxNjEyOEQwNjEwZDEwQWQifQ",
+    "payload": "eyJkb21haW4iOiJkZXhzY3JlZW5lci1iaWd3aW4ubmV0bGlmeS5hcHAifQ",
+    "signature": "Y6JCr1QXUndnVgpLdQlD0yPfxc/Wxj6DcZzkqM+z1CNZ5yrz28O4frzDYe7wBo6okFZPIv9qRs4tqgKuCbqHDRw="
+  },
+  "frame": {
+    "version": "1",
+    "name": "Example Frame",
+    "iconUrl": "https://dexscreener-bigwin.netlify.app/icon.png",
+    "homeUrl": "https://dexscreener-bigwin.netlify.app",
+    "imageUrl": "https://dexscreener-bigwin.netlify.app/image.png",
+    "buttonTitle": "Check this out",
+    "splashImageUrl": "https://dexscreener-bigwin.netlify.app/splash.png",
+    "splashBackgroundColor": "#eeccff",
+    "webhookUrl": "https://dexscreener-bigwin.netlify.app/api/webhook"
+  }
+}
